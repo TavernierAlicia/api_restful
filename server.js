@@ -9,7 +9,7 @@ const fs = require("fs");
 */
 
 app.get('/listUsers', function (req, res){
-    fs.readFile(_dirname + "/" + "users.json", "utf8", function (err, data){
+    fs.readFile(__dirname + "/" + "users.json", "utf8", function (err, data){
         console.log(data);
         res.send(data);
 
