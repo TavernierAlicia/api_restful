@@ -16,7 +16,7 @@ app.get('/listUsers', function (req, res){
     });
 })
 
-let server = app.listen(8081, function() {
+let server = app.listen(8082, function() {
     let host = server.address().address
     let port = server.address().port
     console.log("launch API restful with the following URL http://%s:%s", host, port)
