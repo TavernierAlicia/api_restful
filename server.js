@@ -40,6 +40,40 @@ app.post('/addUsers', function (req, res){
 })
 
 
+/*
+*
+*method > getUserByID
+method Get : Récupérer la ressource d'un utilisateur par l'identifiant
+*
+*/
+
+app.get('/:id', function (req, res){
+    fs.readFile(__dirname + "/" + "users.json", "utf8", function(err, data){
+        if(err) throw err;
+            let users = JSON.parse(data);
+            let user = users["user" + req.params.id]
+            console.log("User Info by ID:" + JSON.stringify(user));
+            res.send(JSON.stringify(user));
+    });
+})
+
+
+/*
+*
+*method > deleteUser
+*
+*/
+
+app.delete('/deleteUser', function(req, res){
+    fs.readFile(__dirname + "/" + "users.json", "utf8", function(err, data){
+        data = JSON.parse(data);
+        delete data["user" + 2];
+        console.log("Delete user" + data);
+        res.send(JSON.stringify(data));
+    });
+})
+
+
 
 let server = app.listen(8082, function() {
     let host = server.address().address
